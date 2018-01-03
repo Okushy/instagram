@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import requests
@@ -97,7 +97,7 @@ class InstagramAPI:
 
     def syncFeatures(self):
         data = json.dumps({
-        '_uuid'         : self.uuid,
+         '_uuid'         : self.uuid,
         '_uid'          : self.username_id,
         'id'            : self.username_id,
         '_csrftoken'    : self.token,
