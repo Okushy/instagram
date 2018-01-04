@@ -13,7 +13,7 @@ tagSearchURL = "https://www.instagram.com/explore/tags/{}/?hl=ja" #.format()で{
 
 #TagSearch
 
-tagName = "カフェスタグラム" #タグの名前
+tagName = "渋谷ランチ" #タグの名前
 
 #selectors
 #ここには書くページのSelectorを選ぶ。x-pathもしくはcss selector
@@ -73,16 +73,17 @@ if __name__ == '__main__':
     mediaCounter = len(mediaList)
     print("Found {} media".format(mediaCounter))
 
-    for media in mediaList:
-        media.click()
-        count = 0
-        
-        print(browser.find_element_by_xpath(likeCounterXpath).text)
-        likeCounter = int(browser.find_element_by_xpath(likeCounterXpath).text)
-        # 20個いいねするまで
-        while count < 20:
-            try:
-                if likeCounter < 10:
+
+    mediaList[9].click()
+    count = 0
+    
+    
+    # 20個いいねするまで
+    while count < 20:
+        try:
+            # if verifyElementPresent(likeCounterXpath):
+            #likeCounter = int(browser.find_element_by_xpath(likeCounterXpath).text)
+            # if likeCounter < 10:
                     time.sleep(3)
                     browser.find_element_by_xpath(likeXpath).click()
                     browser.implicitly_wait(10)
@@ -90,12 +91,11 @@ if __name__ == '__main__':
                     print("liked {} of {}".format(likedCounter,mediaCounter))
                     browser.find_element_by_css_selector(nextPagerSelector).click()
                     count += 1
-                
-                else:
-                    browser.find_element_by_css_selector(nextPagerSelector).click()
-            except:
-                break #もう次へボタンが存在しない場合、エラーをはくのでそこで終了
-        break #for文自体も終了させる
+                    # else:
+                    #eventually(browser.find_element_by_css_selector(nextPagerSelector).click())
+                        ##  eventually(browser.find_element_by_css_selector(nextPagerSelector).click())
+        except:
+            break #もう次へボタンが存在しない場合、エラーをはくのでそこで終了
 
     print("You liked {} media".format(likedCounter))
     browser.quit()
