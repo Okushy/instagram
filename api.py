@@ -81,9 +81,6 @@ if __name__ == '__main__':
     # 20個いいねするまで
     while count < 20:
         try:
-            # if verifyElementPresent(likeCounterXpath):
-            #likeCounter = int(browser.find_element_by_xpath(likeCounterXpath).text)
-            # if likeCounter < 10:
                     time.sleep(3)
                     browser.find_element_by_xpath(likeXpath).click()
                     browser.implicitly_wait(10)
@@ -91,9 +88,6 @@ if __name__ == '__main__':
                     print("liked {} of {}".format(likedCounter,mediaCounter))
                     browser.find_element_by_css_selector(nextPagerSelector).click()
                     count += 1
-                    # else:
-                    #eventually(browser.find_element_by_css_selector(nextPagerSelector).click())
-                        ##  eventually(browser.find_element_by_css_selector(nextPagerSelector).click())
         except:
             break #もう次へボタンが存在しない場合、エラーをはくのでそこで終了
 
